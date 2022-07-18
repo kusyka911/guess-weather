@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+
+import { Game, Results, Welcome } from './components';
+import { useGameContext } from './context';
 
 function App() {
+  const { isGameStarted, isResultAvailable } = useGameContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SwitchTransition>
+      <CSSTransition
+        key={
+          !isGameStarted ? 'welcome' : isResultAvailable ? 'results' : 'game'
+        }
+        in={true}
+        timeout={200}
+        classNames="fade"
+      >
+        <div className="App">
+          {!isGameStarted ? <Welcome /> : null}
+          {isResultAvailable ? <Results /> : null}
+          {isGameStarted && !isResultAvailable ? <Game /> : null}
+        </div>
+      </CSSTransition>
+    </SwitchTransition>
   );
 }
 

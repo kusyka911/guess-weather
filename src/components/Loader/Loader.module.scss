@@ -1,0 +1,45 @@
+$lite: #fff;
+$devil: #ccc;
+$brand: #ff3d00;
+
+.loader {
+  position: relative;
+  width: 175px;
+  height: 80px;
+  background-image: radial-gradient(
+      circle 25px at 25px 25px,
+      $devil 100%,
+      transparent 0
+    ),
+    radial-gradient(circle 50px at 50px 50px, $devil 100%, transparent 0),
+    radial-gradient(circle 25px at 25px 25px, $devil 100%, transparent 0),
+    linear-gradient($devil 50px, transparent 0);
+  background-position: 0 30px, 37px 0, 122px 30px, 25px 40px;
+  background-repeat: no-repeat;
+  background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 5px solid transparent;
+    border-color: $brand transparent;
+    margin: auto;
+    animation: rotation 1s linear infinite;
+    border-radius: 50%;
+    content: '';
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

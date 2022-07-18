@@ -1,0 +1,52 @@
+@import 'src/styles/utils';
+
+.results {
+  $red: #f00;
+  $green: #0f0;
+  @include flex(column);
+
+  padding: 1rem;
+  color: #fff;
+  gap: 1rem;
+  text-shadow: #333 2px 2px 2px;
+
+  &-grid {
+    display: grid;
+    box-sizing: border-box;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(3, 1fr);
+
+    &__item {
+      @include flex();
+
+      padding: 1rem;
+      border: 1px solid #bbb;
+
+      &__title {
+        font-weight: bold;
+      }
+
+      &__correct {
+        color:  $green;
+      }
+
+      &__incorrect {
+        color: $red;
+      }
+    }
+  }
+
+  &-win {
+    color: $green;
+  }
+
+  &-loose {
+    color: $red;
+  }
+
+  &-buttons {
+    @include flex();
+
+    gap: 1rem;
+  }
+}
