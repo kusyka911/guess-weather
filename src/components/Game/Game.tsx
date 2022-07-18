@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from 'react';
+import { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Button } from 'primereact/button';
 import {
@@ -13,6 +13,7 @@ import { useGameContext } from '../../context';
 import classes from './Game.module.scss';
 
 export const Game = memo(() => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const { activeCityIndex, activeCity, cities, nextStep } = useGameContext();
 
   const [tempInputVal, setTempInputVal] = useState<number | null>(null);
@@ -31,6 +32,7 @@ export const Game = memo(() => {
     if (tempInputVal !== null) {
       nextStep(tempInputVal);
       setTempInputVal(null);
+      inputRef.current?.focus();
     }
   }, [tempInputVal, nextStep]);
 
@@ -66,6 +68,7 @@ export const Game = memo(() => {
               What is current temperature in {activeCity}?
             </h2>
             <InputNumber
+              inputRef={inputRef}
               value={tempInputVal}
               max={50}
               min={-50}

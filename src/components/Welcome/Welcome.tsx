@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Button } from 'primereact/button';
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 import { useGameContext } from '../../context';
-import { Loader } from '../Loader';
 
 import classes from './Welcome.module.scss';
 
@@ -56,7 +56,7 @@ export const Welcome = () => {
     <div className={classes['welcome-container']}>
       <h1 className={classes['welcome-header']}>{message}</h1>
       <div className={classes['welcome-body']}>
-        {isGameLoading && <Loader />}
+        {isGameLoading && <ProgressSpinner />}
         {!isGameLoading && <Button onClick={startGame}>Start</Button>}
       </div>
     </div>
