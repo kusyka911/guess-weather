@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx src/",
-    "stylelint": "stylelint 'src/**/*.scss' --fix",
-    "build-pages": "PUBLIC_URL='/guess-weather-pages/' react-scripts build"
+    "stylelint": "stylelint 'src/**/*.scss' --fix"
   },
   "browserslist": {
     "production": [
